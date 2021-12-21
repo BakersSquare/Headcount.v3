@@ -1,16 +1,23 @@
-import './App.css';
+//CSS and Logo Imports
+import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from "./logo.jpg"
 
-import {SignInState}  from "./components/SignInState";
-import { RoomBadgeList } from './components/RoomBadgeList';
-
+//Firebase imports
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 import 'firebase/compat/analytics';
 
+//Getting Hooks
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+
+//Project Components
+import {SignInState}  from "./components/SignInState";
+import Image from 'react-bootstrap/Image'
+//Consider importing Toasts to create notifications in the top right whenever specific rooms are getting filled
+
 
 firebase.initializeApp({
   apiKey: "AIzaSyBWNGgEWcXl8Hoy9gq2yh4iONBtVOQ5LVE",
@@ -33,13 +40,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <header>
-        Headcount with Authentication
-      </header>
 
       <section >
         {user ? <SignedIn /> : <SignedOut />}
-        {/* if user != null, display the UI. if user == null, they haven't signed in*/}
       </section>
 
       </header>
@@ -47,6 +50,7 @@ function App() {
   );
 }
 
+//Modularize this to return a single signed out state component. Keep the googleAuth code, but return a developed component.
 function SignedOut(){
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -54,19 +58,17 @@ function SignedOut(){
   }
   return(
     <div>
-    <img src = {logo} alt="this is the logo" />
-    <button onClick={signInWithGoogle}>Sign in with Google</button>
-  
+      <Image src = {logo} fluid />
+      <button onClick={signInWithGoogle}>Sign in with Google</button>
     </div>
     )
 }
-
 
 //When inside the signed-in state, retrieve all of the room data in the database. 
 function SignedIn(){
 
   const roomsRef = firestore.collection('counts');
-  const query = roomsRef.orderBy('people');
+  const query = roomsRef.orderBy('maximumOccupancy');
   const [rooms] = useCollectionData(query, {idField: 'id'});
 
   return(

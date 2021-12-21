@@ -10,10 +10,9 @@ export class RoomBadgeList extends React.Component {
     render() {
         const roomArray = this.props.roomInfo;
         return (
-            <div class="container" className="RoomBadgeList">
-                {roomArray && roomArray.map(room => <RoomBadge key={room.id} roomName={room.building} numPeople={room.people} maxPeople={room.maximumOccupancy}/>)}
-
-            </div>
+                <div className="RoomBadgeList">
+                    {roomArray && roomArray.map(room => <RoomBadge key={room.id} roomName={room.building} numPeople={room.people} maxPeople={room.maximumOccupancy}/>)}
+                </div>
         );
     }
 }
