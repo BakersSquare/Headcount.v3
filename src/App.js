@@ -13,12 +13,11 @@ import 'firebase/compat/analytics';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
-//Project Components
+//Project Components - consider importing Toasts to create notifications in the top right whenever specific rooms are getting filled
 import {SignInState}  from "./components/SignInState";
 import Image from 'react-bootstrap/Image'
-//Consider importing Toasts to create notifications in the top right whenever specific rooms are getting filled
 
-
+//Initialize the firebase hook w the given config
 firebase.initializeApp({
   apiKey: "AIzaSyBWNGgEWcXl8Hoy9gq2yh4iONBtVOQ5LVE",
     authDomain: "headcount-epics.firebaseapp.com",
@@ -28,15 +27,12 @@ firebase.initializeApp({
     appId: "1:1012274012291:web:0d7ffcd1c17a28b3b6bbb6",
     measurementId: "G-FBJD25855D"
   });
-  
   const auth = firebase.auth();
   const firestore = firebase.firestore();
   
 
 function App() {
-
   const [user] = useAuthState(auth);
-
   return (
     <div className="App">
       <header className="App-header">
@@ -73,14 +69,11 @@ function SignedIn(){
 
   return(
     <div>
-      
-    <SignInState roomInfo={rooms} />
-    
-
-    <button onClick={() => auth.signOut()}>Sign Out</button>
+      <SignInState roomInfo={rooms} onClick={() => auth.signOut()} />
     </div>
   )
 }
+
 
 
 export default App;

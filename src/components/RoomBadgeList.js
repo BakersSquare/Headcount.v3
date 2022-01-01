@@ -11,7 +11,11 @@ export class RoomBadgeList extends React.Component {
         const roomArray = this.props.roomInfo;
         return (
                 <div className="RoomBadgeList">
-                    {roomArray && roomArray.map(room => <RoomBadge key={room.id} roomName={room.building} numPeople={room.people} maxPeople={room.maximumOccupancy}/>)}
+                    <div className="scrollbar scrollbar-danger">
+                    <div className="force-overflow">
+                         {roomArray && roomArray.map(room => <RoomBadge key={room.id} roomName={room.building} numPeople={room.people} maxPeople={room.maximumOccupancy}/>)}
+                    </div>
+                    </div>
                 </div>
         );
     }

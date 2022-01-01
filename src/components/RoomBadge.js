@@ -24,7 +24,7 @@ export class RoomBadge extends React.Component {
                         <Card.Subtitle className="mb-2 text-muted">Maximum Occupancy = {maxPeople}</Card.Subtitle>
                         <ProgressBar>
                             <ProgressBar variant="danger" now={curPeople} key={1} />
-                            <ProgressBar variant="success" now={maxPeople-curPeople} key={2} />
+                            <ProgressBar variant="white" now={maxPeople-curPeople} key={2} />
                         </ProgressBar>
                     </Card.Body>
                 </Card>

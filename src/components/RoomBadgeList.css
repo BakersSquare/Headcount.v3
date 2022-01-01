@@ -1,4 +1,31 @@
 .RoomBadgeList{
-    overflow-y: 'scroll';
     align-items: left;
 }
+
+.scrollbar {
+    float: left;
+    height: 600px;
+    background: black;
+    overflow-y: scroll;
+    }
+.force-overflow {
+    min-height: max-content;
+}
+
+.scrollbar-danger::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: black;
+    border-radius: 10px; }
+    
+    .scrollbar-danger::-webkit-scrollbar {
+    width: 12px;
+    background-color: black; }
+    
+    .scrollbar-danger::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: #ff3547; }
+    
+    .scrollbar-danger {
+    scrollbar-color: #ff3547 #F5F5F5;
+    }

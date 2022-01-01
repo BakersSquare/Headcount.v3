@@ -2,7 +2,7 @@ import React from "react";
 
 import {RoomBadgeList} from "./RoomBadgeList";
 import { MapPane } from "./MapPane";
-import { SignOutButton } from "./SignOutButton";
+import { SignOutPane } from "./SignOutPane";
 
 
 import "./SignInState.css";
@@ -15,9 +15,13 @@ export class SignInState extends React.Component {
         console.log(this.props);
         return (
             <div className="SignInState">
-                <RoomBadgeList roomInfo={this.props.roomInfo}/>
-                <MapPane/>
-                <SignOutButton/>
+                <div className="d-flex flex-row">
+
+                    <RoomBadgeList className="col" roomInfo={this.props.roomInfo}/>
+                    <MapPane className="col" />
+                    <SignOutPane className="col" onClick={this.props.onClick}/>
+
+                </div>
             </div>
         );
     }
