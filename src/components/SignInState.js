@@ -14,14 +14,10 @@ export class SignInState extends React.Component {
     render() {
         console.log(this.props);
         return (
-            <div className="SignInState">
-                <div className="d-flex flex-row">
-
+            <div className="SignInState d-flex flex-row">
                     <RoomBadgeList className="col" roomInfo={this.props.roomInfo}/>
                     <MapPane className="col" />
                     <SignOutPane className="col" onClick={this.props.onClick}/>
-
-                </div>
             </div>
         );
     }

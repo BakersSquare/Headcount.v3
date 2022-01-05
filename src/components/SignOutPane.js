@@ -8,7 +8,7 @@ export class SignOutPane extends React.Component {
     }
     render(props) {
         return (
-            <div className="SignOutPane">
+            <div className="SignOutPane align-self-end p-1">
                 <button className = "SignOut btn btn-danger btn-lg" onClick={this.props.onClick}>Sign Out</button>
             </div>
         );
